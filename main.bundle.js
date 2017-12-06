@@ -1603,10 +1603,11 @@ var UserComponent = (function () {
             { data: [50], label: 'Sensor 1' },
             { data: [28], label: 'Sensor 2' }
         ];
-        this.client = new __WEBPACK_IMPORTED_MODULE_3_ng2_mqtt_mqttws31__["Paho"].MQTT.Client('broker.mqttdashboard.com', 8000, 'clientId-9dPGUIVl3O');
+        this.client = new __WEBPACK_IMPORTED_MODULE_3_ng2_mqtt_mqttws31__["Paho"].MQTT.Client('mqtt.org/', 8081, 'clientId-9dPGUIVl3O');
+        // this.client = new Paho.MQTT.Client('broker.mqttdashboard.com', 8000, 'clientId-9dPGUIVl3O');
         this.onMessage();
         this.onConnectionLost();
-        this.client.connect({ onSuccess: this.onConnected.bind(this) });
+        this.client.connect({ useSSL: true, onSuccess: this.onConnected.bind(this) });
         this.getMyBlog();
         setInterval(function () { _this.getsensor(); }, 500);
         // this.getsensor();
